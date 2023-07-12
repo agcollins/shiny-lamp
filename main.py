@@ -23,13 +23,15 @@ def sort_xml_file(file_path):
         root[:] = sorted(root, key=lambda e: (e.tag, e.get('name') if e.get('name') else ''))
         return pretty_format(root).lstrip()
 
-def sort_xml_string(xml_string):
-    root = ET.ElementTree(ET.fromstring(re.sub(r'<!--.*?-->', '', xml_string, flags=re.DOTALL))).getroot()
-    root[:] = sorted(root, key=lambda e: (e.tag, e.get('name') if e.get('name') else ''))
-    return pretty_format(root).lstrip()
-
 parser = argparse.ArgumentParser(description='Sort an Android strings XML file.')
 parser.add_argument('file', help='The XML file to sort.')
+parser.add_argument('--write', help='Write in place to file.', action='store_true')
 args = parser.parse_args()
 
-print(sort_xml_file(args.file))
+sorted_xml = sort_xml_file(args.file)
+
+if args.write:
+    with open(args.file, 'w') as file:
+        file.write(sorted_xml)
+else:
+    print(sorted_xml)
