@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="has_newline">this string
+        has a newline
+    </string>
+    <string-array name="hello">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <plurals name="something">
+        <item quantity="zero">0</item>
+        <item quantity="other">one</item>
+    </plurals>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Hello World</string>
+</resources>
